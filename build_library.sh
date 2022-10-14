@@ -1,0 +1,1 @@
+cc -fPIC -shared -o main.so main.c

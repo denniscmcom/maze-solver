@@ -6,6 +6,7 @@
 #define MAZE_SOLVER_ALGO_H
 
 #include <png.h>
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 

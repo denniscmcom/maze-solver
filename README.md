@@ -17,6 +17,7 @@ A maze solver written in C.
 3. Make a folder named `sols`. The script place the solutions here.
 
 ## Resources
+- [Maze generator](https://keesiemeijer.github.io/maze-generator/#generate)
 - [Libpng example](http://zarb.org/~gc/html/libpng.html)
 - [Libpng manual](http://www.libpng.org/pub/png/libpng-1.2.5-manual.html)
 - [Inspired by Dr Mike Pound (Computerphile video)](https://www.youtube.com/watch?v=rop0W4QDOUI)

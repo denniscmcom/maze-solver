@@ -2,7 +2,21 @@
 
 A maze solver written in C.
 
+## Constraints
+- Only PNG files
+- Mazes must be square
+- Walls must be black `rgb(0, 0, 0)` and path white `rgb(255, 255, 255)`
+- Walls and path must be 1 px width
+- The starting point must be at `(x: 0, y: 1)`
+- The ending point must be at `(x: width, y: height - 1)`
+
+## Usage
+
+1. Build executable
+2. Make a folder named `mazes` and place the `png` files there.
+3. Make a folder named `sols`. The script place the solutions here.
+
 ## Resources
 - [Libpng example](http://zarb.org/~gc/html/libpng.html)
 - [Libpng manual](http://www.libpng.org/pub/png/libpng-1.2.5-manual.html)
-- [Inspired by Dr Mike Poung (Computerphile video)](https://www.youtube.com/watch?v=rop0W4QDOUI)
+- [Inspired by Dr Mike Pound (Computerphile video)](https://www.youtube.com/watch?v=rop0W4QDOUI)

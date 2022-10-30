@@ -7,6 +7,6 @@ link_directories(${LIBPNG_DIR}/lib)                 # Link lib folder
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(maze_solver main.c algo.c algo.h)
+add_executable(maze_solver src/main.c src/algos.c src/algos.h src/process.c src/process.h src/handlers.c src/handlers.h)
 
 target_link_libraries(maze_solver png)              # Link libraries

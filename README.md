@@ -13,11 +13,10 @@ A maze solver written in C.
 ## Usage
 
 1. Build executable
-2. Make a folder named `mazes` and place the `png` files there.
-3. Make a folder named `sols`. The script place the solutions here.
+2. Make a folder named `sols`. The script place the solutions here.
 
-![maze](resources/maze.png)
-![solution](resources/sol.png)
+![maze](.github/resources/maze.png)
+![solution](.github/resources/sol.png)
 
 ## Resources
 - [Maze generator](https://keesiemeijer.github.io/maze-generator/#generate)

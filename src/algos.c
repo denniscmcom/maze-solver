@@ -2,21 +2,15 @@
 // Created by Dennis Concepción Martín on 15/10/22.
 //
 
-#include "algo.h"
+#include "algos.h"
 
-int isPath(unsigned x, unsigned y, png_bytep* pRows) {
+int is_path(unsigned x, unsigned y, png_bytep* pRows) {
     png_byte *pRow = pRows[y];
     png_byte *pPixel = &pRow[x * 4];
 
-    /*
-     * pPixel[0] -> R
-     * pPixel[1] -> G
-     * pPixel[2] -> B
-     */
-
-    if (pPixel[0] == 255) {
-        pPixel[1] = 0;
-        pPixel[2] = 0;
+    if (pPixel[0] == 255) {     // pPixel[0] -> R
+        pPixel[1] = 0;          // pPixel[1] -> G
+        pPixel[2] = 0;          // pPixel[2] -> B
 
         return 1;
     } else {
@@ -24,13 +18,12 @@ int isPath(unsigned x, unsigned y, png_bytep* pRows) {
     }
 }
 
-
-void wallFollower(png_bytep* pRows, unsigned int width) {
+void wall_follower(png_bytep* pRows, unsigned int width) {
     unsigned int x = 0;
     unsigned int y = 1;
     char direction = 'R';
 
-    isPath(x, y, pRows);
+    is_path(x, y, pRows);
 
     while (x < width && y < width) {
 
@@ -42,19 +35,19 @@ void wallFollower(png_bytep* pRows, unsigned int width) {
             case 'R':
 
                 // Check if down position is white
-                if (isPath(x, y + 1, pRows)) {
+                if (is_path(x, y + 1, pRows)) {
                     ++y;
                     direction = 'D';
                 }
 
                 // Check if right position is white
-                else if (isPath(x + 1, y, pRows)) {
+                else if (is_path(x + 1, y, pRows)) {
                     ++x;
                     direction = 'R';
                 }
 
                 // Check if up position is white
-                else if (isPath(x, y - 1, pRows)) {
+                else if (is_path(x, y - 1, pRows)) {
                     --y;
                     direction = 'U';
                 }
@@ -70,19 +63,19 @@ void wallFollower(png_bytep* pRows, unsigned int width) {
             case 'L':
 
                 // Check if up position is white
-                if (isPath(x, y - 1, pRows)) {
+                if (is_path(x, y - 1, pRows)) {
                     --y;
                     direction = 'U';
                 }
 
                 // Check if left position is white
-                else if (isPath(x - 1, y, pRows)) {
+                else if (is_path(x - 1, y, pRows)) {
                     --x;
                     direction = 'L';
                 }
 
                 // Check if down position is white
-                else if (isPath(x, y + 1, pRows)) {
+                else if (is_path(x, y + 1, pRows)) {
                     ++y;
                     direction = 'D';
                 }
@@ -98,19 +91,19 @@ void wallFollower(png_bytep* pRows, unsigned int width) {
             case 'U':
 
                 // Check if right position is white
-                if (isPath(x + 1, y, pRows)) {
+                if (is_path(x + 1, y, pRows)) {
                     ++x;
                     direction = 'R';
                 }
 
                 // Check if up position is white
-                else if (isPath(x, y - 1, pRows)) {
+                else if (is_path(x, y - 1, pRows)) {
                     --y;
                     direction = 'U';
                 }
 
                 // Check if left position is white
-                else if (isPath(x - 1, y, pRows)) {
+                else if (is_path(x - 1, y, pRows)) {
                     --x;
                     direction = 'L';
                 }
@@ -126,19 +119,19 @@ void wallFollower(png_bytep* pRows, unsigned int width) {
             case 'D':
 
                 // Check if left position is white
-                if (isPath(x - 1, y, pRows)) {
+                if (is_path(x - 1, y, pRows)) {
                     --x;
                     direction = 'L';
                 }
 
                 // Check if down position is white
-                else if (isPath(x, y + 1, pRows)) {
+                else if (is_path(x, y + 1, pRows)) {
                     ++y;
                     direction = 'D';
                 }
 
                 // Check if right position is white
-                else if (isPath(x + 1, y, pRows)) {
+                else if (is_path(x + 1, y, pRows)) {
                     ++x;
                     direction = 'R';
                 }

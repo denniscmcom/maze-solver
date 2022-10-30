@@ -13,7 +13,8 @@ A maze solver written in C.
 ## Usage
 
 1. Build executable
-2. Make a folder named `sols`. The script place the solutions here.
+2. Make a folder names `mazes` and place your mazes there.
+3. Make a folder named `sols`. The script place the solutions here.
 
 ![maze](.github/resources/maze.png)
 ![solution](.github/resources/sol.png)

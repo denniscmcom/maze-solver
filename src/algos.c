@@ -4,7 +4,7 @@
 
 #include "algos.h"
 
-int is_path(unsigned x, unsigned y, png_bytep* pRows) {
+int is_path(int x, int y, png_bytep* pRows) {
     png_byte *pRow = pRows[y];
     png_byte *pPixel = &pRow[x * 4];
 
@@ -19,9 +19,19 @@ int is_path(unsigned x, unsigned y, png_bytep* pRows) {
 }
 
 void wall_follower(png_bytep* pRows, unsigned int width) {
-    unsigned int x = 0;
-    unsigned int y = 1;
-    char direction = 'R';
+    int x = 0;
+    int y = 1;
+
+    enum { R, L, U, D } direction = R;
+
+    static const struct {
+        int dx, dy, next;
+    } lut[][4] = {
+            [R] = {{+0, +1, D}, {+1, +0, R}, {+0, -1, U}, {-1, +0, L}},
+            [L] = {{+0, -1, U}, {-1, +0, L}, {+0, +1, D}, {+1, +0, R}},
+            [U] = {{+1, +0, R}, {+0, -1, U}, {-1, +0, L}, {+0, +1, D}},
+            [D] = {{-1, +0, L}, {+0, +1, D}, {+1, +0, R}, {+0, -1, U}},
+    };
 
     is_path(x, y, pRows);
 
@@ -31,118 +41,16 @@ void wall_follower(png_bytep* pRows, unsigned int width) {
             break;
         }
 
-        switch (direction) {  // NOLINT(hicpp-multiway-paths-covered)
-            case 'R':
+        for (int i = 0; i < 4; i++) {
+            int tx = x + lut[direction][i].dx;
+            int ty = y + lut[direction][i].dy;
 
-                // Check if down position is white
-                if (is_path(x, y + 1, pRows)) {
-                    ++y;
-                    direction = 'D';
-                }
-
-                // Check if right position is white
-                else if (is_path(x + 1, y, pRows)) {
-                    ++x;
-                    direction = 'R';
-                }
-
-                // Check if up position is white
-                else if (is_path(x, y - 1, pRows)) {
-                    --y;
-                    direction = 'U';
-                }
-
-                // Turn 180
-                else {
-                    --x;
-                    direction = 'L';
-                }
-
+            if (is_path(tx, ty, pRows)) {
+                x = tx;
+                y = ty;
+                direction = lut[direction][i].next;
                 break;
-
-            case 'L':
-
-                // Check if up position is white
-                if (is_path(x, y - 1, pRows)) {
-                    --y;
-                    direction = 'U';
-                }
-
-                // Check if left position is white
-                else if (is_path(x - 1, y, pRows)) {
-                    --x;
-                    direction = 'L';
-                }
-
-                // Check if down position is white
-                else if (is_path(x, y + 1, pRows)) {
-                    ++y;
-                    direction = 'D';
-                }
-
-                // Turn 180
-                else {
-                    ++x;
-                    direction = 'R';
-                }
-
-                break;
-
-            case 'U':
-
-                // Check if right position is white
-                if (is_path(x + 1, y, pRows)) {
-                    ++x;
-                    direction = 'R';
-                }
-
-                // Check if up position is white
-                else if (is_path(x, y - 1, pRows)) {
-                    --y;
-                    direction = 'U';
-                }
-
-                // Check if left position is white
-                else if (is_path(x - 1, y, pRows)) {
-                    --x;
-                    direction = 'L';
-                }
-
-                // Turn 180
-                else {
-                    ++y;
-                    direction = 'D';
-                }
-
-                break;
-
-            case 'D':
-
-                // Check if left position is white
-                if (is_path(x - 1, y, pRows)) {
-                    --x;
-                    direction = 'L';
-                }
-
-                // Check if down position is white
-                else if (is_path(x, y + 1, pRows)) {
-                    ++y;
-                    direction = 'D';
-                }
-
-                // Check if right position is white
-                else if (is_path(x + 1, y, pRows)) {
-                    ++x;
-                    direction = 'R';
-                }
-
-                // Turn 180
-                else {
-                    --y;
-                    direction = 'U';
-                }
-
-                break;
+            }
         }
     }
 }

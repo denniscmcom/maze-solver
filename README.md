@@ -6,7 +6,7 @@ A maze solver written in C.
 - Only PNG files
 - Mazes must be square
 - Walls must be black `rgb(0, 0, 0)` and path white `rgb(255, 255, 255)`
-- Walls and path must be 1 px width
+- Walls and path must be `1 px` width
 - The starting point must be at `(x: 0, y: 1)`
 - The ending point must be at `(x: width, y: height - 1)`
 
@@ -15,6 +15,7 @@ A maze solver written in C.
 1. Build executable
 2. Make a folder names `mazes` and place your mazes there.
 3. Make a folder named `sols`. The script place the solutions here.
+4. Run the program `./maze_solver maze1.png`
 
 ![maze](.github/resources/maze.png)
 ![solution](.github/resources/sol.png)

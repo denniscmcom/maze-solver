@@ -17,8 +17,8 @@ A maze solver written in C.
 3. Make a folder named `sols`. The script place the solutions here.
 4. Run the program `./maze_solver maze1.png`
 
-![maze](.github/resources/maze.png)
-![solution](.github/resources/sol.png)
+![maze](https://github.com/denniscmartin/maze-solver/assets/66180929/25820b82-c76a-4d51-9964-12f798ddf659)
+![sol](https://github.com/denniscmartin/maze-solver/assets/66180929/364266ad-fdd2-4c6a-8f05-5b238f81efff)
 
 ## Resources
 - [Maze generator](https://keesiemeijer.github.io/maze-generator/#generate)
